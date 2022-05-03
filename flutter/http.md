@@ -12,10 +12,9 @@
     print('Response status: ${response.statusCode}');
 ```
 
-##  Send other method
+## Send other method
 
 - create a Request object with method and uri
-    
 - add params or body to request
 
 - call request.send() method
@@ -24,20 +23,20 @@
 
 - final use response
 
-    ```dart
-        void network() async {
-        final bytes = <int>[];
-        var request = http.Request("Custom Method", Uri(host: ""))
-            ..headers.addAll({})
-            ..body = ""
-            ..bodyBytes = bytes
-            ..bodyFields = {}
-            /// custom request
-            ;
-        http.StreamedResponse streamedResponse = await request.send();
-        final response = await http.Response.fromStream(streamedResponse);
-    }
-    ```
+  ```dart
+      void network() async {
+      final bytes = <int>[];
+      var request = http.Request("Custom Method", Uri(host: ""))
+          ..headers.addAll({})
+          ..body = ""
+          ..bodyBytes = bytes
+          ..bodyFields = {}
+          /// custom request
+          ;
+      http.StreamedResponse streamedResponse = await request.send();
+      final response = await http.Response.fromStream(streamedResponse);
+  }
+  ```
 
 ## Custom HttpClient
 
@@ -59,6 +58,28 @@ class UserAgentClient extends http.BaseClient {
     return _inner.send(request);
   }
 }
+```
+
+## MultipartFile
+
+- Send File as String
+
+- Send File as Bytes
+
+- Send File from path
+
+```dart
+    final bytes = <int>[];
+    var uri = Uri.parse('https://example.com/create');
+    var request = http.MultipartRequest('POST', uri)
+      ..fields['user'] = 'nweiz@google.com'
+      ..files.add(http.MultipartFile.fromBytes("package", bytes,filename: "package.tar.gz"))
+      ..files.add(http.MultipartFile.fromString("package", base64UrlEncode(bytes),filename: "package.tar.gz"))
+      ..files.add(
+          await http.MultipartFile.fromPath('package', 'build/package.tar.gz'));
+    var response = await request.send();
+    if (response.statusCode == 200) print('Uploaded!');
+
 ```
 
 ## Retry
