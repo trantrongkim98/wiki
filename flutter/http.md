@@ -1,7 +1,10 @@
 # HTTP
 
-- A composable, Future-based library for making HTTP requests.
+- A composable, Future-based library for making __HTTP__ requests.
 
+- Easy to customization request and response with custom `http.BaseClient`
+
+- Easy to retry a request by a wrapper `retry.RetryClient` with a `http.BaseClient` param to customization request 
 ## Example
 
 ```dart
@@ -17,9 +20,9 @@
 - create a Request object with method and uri
 - add params or body to request
 
-- call request.send() method
+- call `request.send()` method
 
-- Use Response.fromStream to parse **StreamedResponse** response
+- Use `Response.fromStream` to parse __StreamedResponse__ response
 
 - final use response
 
@@ -40,11 +43,11 @@
 
 ## Custom HttpClient
 
-- Sử dụng để xử lý Request, xứ lý Response
+- Sử dụng để xử lý `Request`, xứ lý `Response`
 
-- Logging Request | Response
+- Logging `Request` | `Response`
 
-- Tạo Interceptors,...
+- Tạo `Interceptors`,...
 
 ```dart
 class UserAgentClient extends http.BaseClient {
@@ -84,11 +87,11 @@ class UserAgentClient extends http.BaseClient {
 
 ## Retry
 
-- A class wrapper on http.Client
+- A class wrapper on `http.Client`
 
-- By default, Retries any response with **statusCode = 503**
+- By default, Retries any response with __statusCode = 503__
 
-- It waits 500ms before the first retry, and increases the delay by 1.5x each time.
+- It waits `500ms` before the first retry, and increases the delay by `1.5x each time`.
 
 ```dart
 import 'package:http/http.dart' as http;
