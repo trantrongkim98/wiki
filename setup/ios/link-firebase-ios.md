@@ -57,3 +57,8 @@
 
 6. Drag it to Firebase Console
 
+## Resources
+
+- [Firefare Setup](https://firebase.flutter.dev/docs/messaging/apple-integration)
+
+- [Certificates, Identifiers & Profiles](https://developer.apple.com/account/resources/authkeys/list)
