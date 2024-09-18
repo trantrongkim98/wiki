@@ -45,7 +45,7 @@ int jump1(int *nums, int numsSize)
 
         if (curIndex + *nums >= maxJumps)
         {
-
+            printf("%d = %d + %d\n", maxJumps,curIndex,*nums);
             maxJumps = curIndex + *nums;
         }
         if (curIndex == endIndex)
